@@ -1,0 +1,126 @@
+body{
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-weight: 300;
+  padding: 30px;
+  word-break: break-word;
+  
+/*   font-family: 'Roboto', sans-serif; */
+}
+p, ul, li, code{
+  word-break: break-word;
+  line-height: 150%;
+  font-size: 18px;
+}
+#docs{
+  width: 75%;
+  word-break: break-word;
+}
+pre code, code{
+  white-space: pre;
+  font-family: 'Cutive Mono', monospace;
+  font-weight: 300;
+  font-size: 14px;
+}
+.note, pre code{
+  padding: 14px;
+}
+.copy-button {
+   position: relative;
+   top: 0;
+  cursor: pointer;
+}
+.demo_link{
+  color: dodgerblue;
+  font-weight: 1200;
+}
+h1{
+  word-wrap: break-word;
+}
+.byline{
+  font-weight: thin;
+  font-size: 12px;
+}
+.smallest{
+  font-weight:thin;
+}
+a{
+  color: inherit;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.heading{
+  text-align: center;
+}
+.heading h1{
+  font-weight: thin;
+  font-size: 57px;
+}
+.heading .byline{
+  font-size: 24px;
+}
+.hljs-copy-button{
+  background-color: #00000088 !important;
+  transition: 250ms;
+}
+.hljs-copy-button:hover{
+  background-color: #0000009a !important;
+}
+.hljs-copy-button:focus{
+  outline-offset: 3px;
+  outline: 3px solid black;
+}
+.button, button{
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: #00000000;
+  color: black;
+  transition: 100ms;
+  /*display: inline-block;*/
+  
+}
+.button:not(.hljs-copy-button), button:not(.hljs-copy-button){
+  display: inline-block;
+  margin: 6px;
+  padding: 12px;
+}
+.button:hover, button:hover{
+  background-color: #000000;
+  color: #ffffff;
+}
+pre,#docs .note,#docs p,#docs ul{
+  display: block !important;
+  border-radius: 8px !important;
+}
+input{
+  padding: 6px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 2px;
+  transition: 200ms;
+}
+input:focus{
+  outline: 2px solid dodgerblue;
+}
+.cropper {
+  width: 128px;
+  height: 128px;
+  /*position: relative;*/
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid #000000aa;
+  display:inline-block;
+}
+
+.rounded {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+.note{
+  border-left: 6px solid #e8e821;
+  padding: 12px;
+  background-color: #ffffb8;
+
+}

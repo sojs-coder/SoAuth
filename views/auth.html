@@ -1,0 +1,23 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ macros.head("Log In") }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>Login With SoAuth</h1>
+        <p id = "splash" class = "byline">Allow <a href ="{{ ref }}">{{ ref }}</a> to know your email and name?</p>
+        
+        <input type = "email" name = "email" id = "email" placeholder = "Email"><br>
+        <input type = "password" id = "password" name = "password" placeholder= "Password"><br>
+        </div>
+        <button id = "login_button">Authorize</button>
+        <p class = "byline" style = "font-size: 14px;">Don't have an account? <a style = "color: dodgerblue" href = "/signup">Sign up now</a></p>
+      </section>
+    </main>
+    <script src = "/js/auth_pop.js"></script>
+  </body>
+</html>

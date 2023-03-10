@@ -1,0 +1,21 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ macros.head("Verify Your Account") }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>Verify {{ email }}</h1>
+        <p id = "splash" class = "byline">An email has been sent to {{ email }} with a verification code.</p>
+        <h4>Verification code:</h4>
+        <input name = "code" id = "code" placeholder = "Code"><br>
+        </div>
+        <button id = "verify_button">Verify</button>
+      </section>
+    </main>
+    <script src = "/js/verify.js"></script>
+  </body>
+</html>

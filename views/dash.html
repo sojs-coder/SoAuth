@@ -1,0 +1,31 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ macros.head("Dashboard") }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>{{ user.fName }}'s Profile</h1>
+        <p id = "splash" class = "byline">Edit your profile</p>
+        <div class = "cropper">
+<img src="{{ user.pfp }}" alt="Profile Picture" width= "128" height= "128" class = "rounded"></div><br>
+        <input name = "pfp" id = "pfp" placeholder= "pfp" value= "{{ user.pfp }}">
+        {% if (user.verified == false) %}
+        <p class = "byline">Please <a style = "color: dodgerblue" href = "/verify/{{ user.email }}">verify your email</a> to be able to change your display name and profile photo.</p>
+        {% endif %}
+        <p><b>Email:</b></p>
+        <input name = "email" id = "email" value = "{{ user.email }}"placeholder = "Email" disabled><br>
+        <p><b>Name:</b></p>
+        <input name = "name" id = "name" value = "{{ user.fName }} {{ user.lName }}" placeholder = "Name"><br>
+        <p><b>Display Name:</b></p>
+        <input name = "display" id = "display" value = "{{ user.display }}"placeholder = "Display Name"><br>
+        </div>
+        <button id = "save">Save Profile</button>
+      </section>
+    </main>
+    <script src = "/js/dash.js"></script>
+  </body>
+</html>

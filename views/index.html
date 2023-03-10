@@ -1,0 +1,143 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    {{ macros.head("SoAuth") }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
+/>
+    <script>
+      hljs.addPlugin(new CopyButtonPlugin());
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>SoAuth</h1>
+        <p class = "smallest"><i>By <a href = "https://sojs-space.sojs.repl.co">@SoJS</a></i></p>
+        <p class = "byline">Easy. Secure. Scalable.</p>
+        <p class = "byline">Log in to customize your profile</p>
+        <a href = "/c-signup" class = "button">Log in</a><a href = "#demos" class = "button">View Demos</a><a href = "//sojs-space.sojs.repl.co/contact" class = "button">Contact</a>
+      </section>
+      <section id = "docs">
+        <h1>SoAuth</h1>
+        <p>SoAuth is a powerful and secure authentication solution that offers serverless capabilities, making it easy to integrate into any project. It uses JSON web tokens for security, which are highly secure and tamper-proof. The python and node.js modules make it easy to integrate into any application, whether it's a web app or a chat room. Email verification is also built-in, making it ideal for applications that require user verification such as chat rooms and comment systems. SoAuth is a great choice for anyone looking for a reliable and user-friendly authentication solution.</p>
+        <h2>SoAuth User Data</h2>
+<pre><code>
+{
+  "user": {
+    "display":"&lt;user display name&gt;",
+    "fName":"&lt;user first name&gt;",
+    "lName":"&lt;user last name&gt;",
+    "email":"&lt;user email&gt;",
+    "verified":&lt;boolean, true if user email is verified, false otherwise&gt;,
+    "pfp":"&lt;url to user's profile image&gt;"
+  }
+}
+</code></pre>
+        <h2>Setting up SoAuth</h2>
+<p>In order to set up SoAuth, you will need to follow these steps:</p>
+<ul>
+    <li>Give any element you want the user to click on to log in an ID of "SoAuthButton".</li>
+    <li>Import the script "https://soauth.sojs.repl.co/js/soauth.js" at the bottom of the page.</li>
+</ul>
+<h3>Example</h3>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+      &lt;title&gt;My App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;button id=&quot;SoAuthButton&quot;&gt;Log in With SoAuth&lt;/button&gt;
+    &lt;script src=&quot;https://soauth.sojs.repl.co/js/soauth.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>As you can see in this example, we have added an ID of "SoAuthButton" to a log in button, and imported the SoAuth script at the bottom of the page. When the button is clicked, the SoAuth system will handle the log in process.</p>
+<h2>Using SoAuth</h2>
+<p>SoAuth can be used in three different ways: Serverless, NodeJS, and Python.</p>
+<h3>Serverless</h3>
+<p>To use SoAuth in a serverless environment, you can use the global method "window.SOAUTH.getUser()". This method returns a promise that resolves with the user data, as formatted above, and is false if the user is not logged in.</p>
+<h3>NodeJS</h3>
+<p>To use SoAuth in a NodeJS environment, you will need to use the express-session and cookie-parser middlewares, then import the module "@sojs_coder/soauth". That module comes with a method called "soauth", which you use as a middleware for your express app, taking care to place it after cookie-parser and express-session. The middleware populates the user data into req.session.soauth.user</p>
+<h3>Python</h3>
+<p>To use SoAuth in a Python environment, you will need to import the module "soauth", and access the "soauth" method from it. Use the soauth method as middleware, and also install a session manager like flask-session. The user data is also populated into request.session.soauth.user</p>
+        <h2>Examples</h2>
+<h3>Serverless</h3>
+<pre><code>
+// Check if user is logged in
+window.SOAUTH.getUser().then(user => {
+    if (user) {
+        console.log('User is logged in:', user);
+    } else {
+        console.log('User is not logged in');
+    }
+});
+</code></pre>
+<p class = "note">For scripts that you want to be able to access user data, put the <code>SoAuth</code> script in the <code>head</code> section of the HTML file. This will allow the <code>window.SOAUTH.getUser()</code> method to be accessed anywhere on the page</p>
+<p class = "note">If it does not matter to you if the script is able to be accessed anywhere, just put the script before any other scripts that use the <code>window.SOAUTH.getUser()</code> method. If this sounds confusing check out the full code example</p>
+<a href = "https://replit.com/@sojs/Serverless-SoAuth?v=1" class = "button">Full Code Example</a> + <a href = "https://Serverless-SoAuth.sojs.repl.co" class = "button">Live Demo</a>
+<h3>NodeJS</h3>
+<pre><code>
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const soauth = require('@sojs_coder/soauth');
+
+const app = express();
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(soauth);
+
+app.get('/', (req, res) => {
+  if (req.session.so_auth.user) {
+    res.send('Welcome, ' + req.session.so_auth.user.display);
+  } else {
+   res.send('Please log in');
+  }
+});
+
+app.listen(3000);
+</code></pre>
+<a href = "https://replit.com/@sojs/Express-SoAuth?v=1#index.js" class = "button">Full Code Example</a> + <a href = "https://express-soauth.sojs.repl.co/" class = "button">Live Demo</a>
+<h3>Python</h3>
+<pre><code>
+from flask import Flask, session
+from soauth import soauth
+
+app = Flask(name)
+app.secret_key = 'secret'
+
+@app.before_request
+def check_auth():
+    soauth.soauth()
+
+@app.route('/')
+def index():
+  if "so_auth" not in session or "user" not in session["so_auth"]
+    return 'Please log in'
+  else:
+    return 'Welcome, ' + session['so_auth']['user']['display']
+if name == 'main':
+  app.run()
+</code></pre>
+<p class = "note">This will return "Please log in" every time. In order to actually give login functionality to your site, you have to follow the first step. For a full example, click on "Full Code Example"</p>
+<a href = "https://replit.com/@sojs/Flask-SoAuth?v=1#main.py" class = "button">Full Code Example</a> + <a href = "https://flask-soauth.sojs.repl.co/" class = "button">Live Demo</a>
+<p>In these examples, you can see how to use the SoAuth system in a serverless, NodeJS, and Python environment. In each example, we check if the user is logged in by checking for the presence of the user data in the session, and then displaying a welcome message or a prompt to log in.</p>
+      </section>
+    </main>
+  </body>
+</html>

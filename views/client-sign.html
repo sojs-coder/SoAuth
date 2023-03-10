@@ -1,0 +1,17 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ macros.head("SAuth") }}
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>Login</h1>
+        <p class = "byline">Login to SoAuth to edit your profile</p>
+        <button id = "SoAuthButton">Open Popup</button>
+      </section>
+    </main>
+    <script src = "/js/soauth.js"></script>
+  </body>
+</html>

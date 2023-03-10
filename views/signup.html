@@ -1,0 +1,23 @@
+{% import "./macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ macros.head("Log In") }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <main>
+      <section class = "heading">
+        <h1>Sign Up For SoAuth</h1>
+        <p id = "splash" class = "byline">{% if (completion) %}Finish setting up your account{% else %}Create a SoAuth account{% endif %}</p>
+        <input name = "email" id = "email" type = "email"placeholder = "Email" {% if (completion) %}value = "{{ completion }}"{% endif %}><br>
+        <input name = "name" id = "name" placeholder= "Name">
+        <input name = "display" id = "display" placeholder = "Display Name"><br>
+        <input type = "password" id = "password" name = "password"placeholder= "Password"><br>
+        </div>
+        <button id = "login_button">Sign Up</button>
+      </section>
+    </main>
+    <script src = "/js/sign.js"></script>
+  </body>
+</html>
